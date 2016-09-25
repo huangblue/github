@@ -1,0 +1,50 @@
+关联本地仓库与远程仓库，有两个途径:
+先建立远程仓库，然后克隆到本地
+先建立本地仓库，然后建立远程仓库。将其添加为本地仓库的远程仓库。
+后者可以用在添加多个远程仓库的场景。
+
+一、先远程，再克隆到本地
+
+1 建立远程仓库
+
+2 在本地文件夹中使用命令
+
+  git clone <远程仓库网址> [本地仓库名字]
+
+  如果不用本地仓库名字，是本地仓库用的是远程仓库的名字，具体表现为文件夹名。
+  就是在所在文件夹中建立一个子文件夹
+
+  这个要简单些。如果开始建立一个仓库，就用这个办法。
+
+
+二、先建立本地仓库，再建立远程仓库，再关联
+
+1 到一个文件夹，执行
+  git init
+
+  这样这个文件夹成为本地仓库。
+
+2 建立远程仓库，名字最好与本地的一样
+
+3 将远程仓库添加为本地仓库的远程仓库
+
+  git remote add <name> <url>
+
+4 将远程仓库下拉到本地
+
+  git pull <name> <url>  --allow-unrelated-histories
+
+  例如：
+
+  git pull base1 master  --allow-unrelated-histories
+
+  这个--allow-unrelated-histories是必须的，因为两个仓库没有共同祖先
+
+
+4 git push --set-upstream <name> <branch>
+  例如：
+  git push --set-upstream base1 master
+
+  至此，把两个仓库关联起来了。
+
+ 
