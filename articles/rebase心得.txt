@@ -1,0 +1,59 @@
+定义两个术语：基分支，变分支
+变分支的基底将指向基分支，变基结束后，变分支在基分支的前面（基分支落后），可以将基分支快进到变分支（这正是一般的目的）。
+第一个格式，当前分支是变分支，另两个格式，两个分支都在命令中，基分支都写在前面。
+
+
+1 git rebase <基分支> 例：
+ 
+  git rebase master
+  
+
+  将当前分支指向基分支。处理后，基分支落后于当前分支，在一直线上。
+  当前分支为变分支。
+  
+ 【例子中假定当前分支是experiment】
+  实际上它们也合并了。
+
+  之后，可以将基分支快进到当前分支
+  git checkout master
+  git merge experiment
+
+
+2 git rebase --onto <基分支> <中分支> <变分支> 例： 
+
+  git rebase --onto master server client
+
+  此命令与当前分支无关，涉及的分支都在命令中
+
+  取出变分支，找出处于中后分支的共同祖先之后的修改，然后把它们在基分支上重演。结果是变分支在前基支后面，可能落后若干个提交。
+  【例子是取出 client 分支，找出处于 client 分支和 server 分支的共同祖先之后的修改，然后把它们在 master 分支上重演】
+
+  之后可以快进合并到变分支。
+  
+  git checkout master
+  git merge client
+
+
+3  git rebase <基分支> <变分支> 例如：
+
+   git rebase master server 
+
+   命令与当前分支无关
+
+   将把变分支的基指向基分支
+
+   之后可以快进基分支
+
+   git checkout master 
+   git merge server 
+
+
+  
+
+  
+  
+   
+
+
+
+
