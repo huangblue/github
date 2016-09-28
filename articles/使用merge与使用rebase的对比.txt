@@ -1,0 +1,19 @@
+合并两个分支experiment与master
+
+用merge：
+
+1 git checkout master(如果当前分支为master，不需要)
+2 git merge experiment
+
+
+用变基
+
+1 git checkout experiment（如果当前分支为experiment，不需要） 
+2 git rebase master 
+
+
+3 git checkout master
+4 git merge experiment[快进]
+
+换基使提交历史简洁，是一条直线
+
